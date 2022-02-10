@@ -1,10 +1,10 @@
 {
-  "name": "react-cache-buster",
-  "version": "0.1.6",
+  "name": "@phurinat/react-cache-buster",
+  "version": "0.2.7",
   "description": "This package allows clients to automatically check the new version when a new version is released in the production environment, and if a new version is published, clearing the cache and reload the page.",
   "author": "CagriAldemir",
   "license": "MIT",
-  "repository": "CagriAldemir/react-cache-buster",
+  "repository": "PhurinatBunyachai/react-cache-buster",
   "keywords": [
     "react",
     "cache-busting",
@@ -18,7 +18,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "yarn buildTypes && microbundle-crl --no-compress --no-sourcemap --format modern,cjs",
+    "build": "yarn buildTypes && microbundle-crl ./src/*.js --no-compress --no-sourcemap --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --no-sourcemap --format modern,cjs",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
@@ -28,7 +28,7 @@
     "test:watch": "react-scripts test --env=jsdom",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build",
-    "buildTypes": "tsc ./src/*.js --declaration --allowJs --emitDeclarationOnly --outDir dist"
+    "buildTypes": "tsc ./src/index.js --declaration --allowJs --emitDeclarationOnly --outDir dist"
   },
   "peerDependencies": {
     "react": "^17.0.2"
@@ -59,6 +59,8 @@
   ],
   "dependencies": {
     "compare-versions": "^4.1.2",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "tsc": "^2.0.4",
+    "typescript": "^4.5.5"
   }
 }
